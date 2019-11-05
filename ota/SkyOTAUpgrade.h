@@ -26,7 +26,7 @@ static const int STATUS_DOWNLOAD_FINISHED = 4;
 static const int STATUS_DOWNLOAD_ERROR = 5;
 
 //status: downloaded state,param1 is the actually downloaded progress.	
-typedef void (*cb_notify) (int status, int param1, int param2);
+typedef void (*cb_notify) (int status, int param1, void* param2);
 
 typedef struct{
 	unsigned char lc_version[16];			//format:"018006015",  for example data:2018-06-15
@@ -37,7 +37,7 @@ typedef struct{
 
 	unsigned char chip[32];						//format:"2C01"
 
-	void (*cb_notify) (int status, int param1, int param2);
+	void (*cb_notify) (int status, int param1, void* param2);
 
 }SkyOtaRequestInfo;
 

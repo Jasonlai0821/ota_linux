@@ -29,7 +29,7 @@ static const int STATUS_DOWNLOAD_ERROR = 5;
 //if status is STATUS_NEW_VERSION_EXISTED,param1 will be  filesize, param2 will be filename address.
 //filename:»úÐ¾_»úÐÍ_V°æ±¾_ÇøÓòÂë_LinyPlayer°æ±¾ºÅ.zip;
 //ÀýÈç£ºMT7688_SkySoundBox_SBO1O_V018.007.040_9_3.6.5903.0023.6.120.1.11.zip
-typedef void (*cb_notify) (int status, int param1, int param2);
+typedef void (*cb_notify) (int status, int param1, void* param2);
 
 typedef struct{
 	unsigned char lc_version[16];			//format:"018006015",  for example data:2018-06-15
@@ -40,7 +40,7 @@ typedef struct{
 
 	unsigned char chip[32];						//format:"2C01"
 
-	void (*cb_notify) (int status, int param1, int param2);
+	void (*cb_notify) (int status, int param1, void* param2);
 
 }SkyOtaRequestInfo;
 

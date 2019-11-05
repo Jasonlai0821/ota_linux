@@ -17,7 +17,7 @@
 #include "debug_log.h"
 #include "Utility.h"
 
-#define SKYOTA_CURL_DEBUG 1
+#define SKYOTA_CURL_DEBUG 0
 #define SKYOTA_CURL_VERBOSE 1
 
 using namespace skyota::net;

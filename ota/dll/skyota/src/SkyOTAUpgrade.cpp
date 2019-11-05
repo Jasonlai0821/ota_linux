@@ -19,24 +19,24 @@ static int s_i4VersionHasBeenChecked = -1;
 */
 
 
-typedef void (*cb_notify) (int status, int param1, int param2);
+typedef void (*cb_notify) (int status, int param1, void* param2);
 class MyDownloaderListner : public skyota::facade::SkyOtaDownloaderListener
 {
 public:
-	void notify(int status, int param1, int param2);
+	void notify(int status, int param1, void* param2);
 
-	void callback_notify(void (*cb_notify) (int , int , int ),int status,int param1,int param2);
+	void callback_notify(void (*cb_notify) (int , int , void* ),int status,int param1,void* param2);
 public:
-	void (*callback) (int , int , int );
+	void (*callback) (int , int , void* );
 };
 
-void MyDownloaderListner::callback_notify(void (*cb_notify) (int , int , int ),int status,int param1,int param2){
+void MyDownloaderListner::callback_notify(void (*cb_notify) (int , int , void* ),int status,int param1,void* param2){
 	cb_notify(status,param1,param2);
 }
 
-void MyDownloaderListner::notify(int status, int param1, int param2)
+void MyDownloaderListner::notify(int status, int param1, void* param2)
 {
-	printf("notify() status:%d, param1:%d,param2:%d \n",status,param1,param2);
+	//printf("notify() status:%d, param1:%d\n",status,param1);
 
 	if (status == SkyOtaDownloaderListener::STATUS_NEW_VERSION_NOT_EXISTED)
 	{

@@ -328,7 +328,7 @@ int SkyOtaDownloader::InternalVersionListner::connectAction(SkyOtaConnectionEven
 				DEBUGPRINT(DEBUG_INFO,("InternalVersionListner() version:%d,lc_version:%d\n",version,lc_version));
 				DEBUGPRINT(DEBUG_INFO,("InternalVersionListner() filename:%s \n",filename));
 				if(version > lc_version){
-					prListner->notify(SkyOtaDownloaderListener::STATUS_NEW_VERSION_EXISTED, filesize, (long)filename);
+					prListner->notify(SkyOtaDownloaderListener::STATUS_NEW_VERSION_EXISTED, filesize, (void*)filename);
 				}else{
 					prListner->notify(SkyOtaDownloaderListener::STATUS_NEW_VERSION_NOT_EXISTED, 0, 0);
 				}
@@ -364,9 +364,11 @@ int SkyOtaDownloader::InternalDownloadingListner::connectAction(SkyOtaConnection
 	if (event.getAction() == SkyOtaConnectionEvent::Connected)
 	{
 		char * response = event.getContent();
+		int length = event.getLength();
 		if (event.getErrorCode() == SkyOtaConnectionEvent::CodeOk)
 		{
 			//TODO: ring buffer
+			prListner->notify(SkyOtaDownloaderListener::STATUS_DOWNLOAD_PROGRESS, length, (void*)response);
 		}
 	}else if (event.getAction() == SkyOtaConnectionEvent::Disconnected)
 	{

@@ -40,7 +40,7 @@ namespace skyota {
 
 			virtual ~SkyOtaDownloaderListener(){};
 
-			virtual void notify(int status, int param1, int param2)=0;
+			virtual void notify(int status, int param1, void* param2)=0;
 		};   
 
 		class SkyOtaDownloader

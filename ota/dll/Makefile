@@ -22,7 +22,7 @@ INCLUDE_DIRS = -I./include/curl -I./include -I./include/os -I./os/include -I./sk
 
 # opencv 头文件和lib路径 
 OPENCV_INC_ROOT = /usr/local/include/opencv 
-OPENCV_LIB_ROOT = =${CUR_DIR}/libs
+OPENCV_LIB_ROOT = ${CUR_DIR}/libs
 
 OBJS = $(OBJECTS) #.o文件与.cpp文件同名
 LIB = libOtaUpgrade.so # 目标文件名 
